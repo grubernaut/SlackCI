@@ -1,8 +1,9 @@
+# SlackCI
+===========
+
 [![Gem Version](https://badge.fury.io/rb/slack_ci.svg)](http://badge.fury.io/rb/slack_ci)
 [![Dependency Status](https://gemnasium.com/grubernaut/SlackCI.svg)](https://gemnasium.com/grubernaut/SlackCI)
 [![Build Status](https://travis-ci.org/grubernaut/SlackCI.svg?branch=master)](https://travis-ci.org/grubernaut/SlackCI)
-
-# SlackCi
 
 Slack Gem for Ruby. Includes Binary executable for instantly posting messages to slack via
 the command line. 
@@ -46,5 +47,26 @@ I have created a new slack team and a new web integration just for rspec purpose
 
 ## Usage
 
-TODO: Write usage instructions here
+Require the Gem:
+```
+require 'slack_ci'
+```
+
+Initialize a Slack object with your team name and Webhook Token:
+```
+slack = SlackCi.new('team','token')
+```
+Post Messages to Slack by passing a Hash to SlackCi's ```say``` method:
+```
+message = {
+  'text' => 'This is one awesome message',
+  'channel' => '#general'
+}
+unless slack.say(message) == '200'
+  abort("Message failed to post")
+end
+```
+
+To Create a webhook token for your team, start [here](https://slackci.slack.com/services/new/incoming-webhook), and select any channel for the webhook. 
+Then use the generated token from Slack as your access token. You will be able to post to different channels in slack with the same token, if you specify ```channel``` inside the message hash. 
 
