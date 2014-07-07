@@ -1,5 +1,6 @@
 [![Gem Version](https://badge.fury.io/rb/slack_ci.svg)](http://badge.fury.io/rb/slack_ci)
 [![Dependency Status](https://gemnasium.com/grubernaut/SlackCI.svg)](https://gemnasium.com/grubernaut/SlackCI)
+[![Build Status](https://travis-ci.org/grubernaut/SlackCI.svg?branch=master)](https://travis-ci.org/grubernaut/SlackCI)
 
 # SlackCi
 
