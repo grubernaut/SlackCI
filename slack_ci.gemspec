@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['jake.champlin.27@gmail.com']
   spec.summary       = 'Use Slack from the terminal!'
   spec.description   = 'Post Slack Messages to a channel from the terminal!'
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/grubernaut/SlackCI'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -23,9 +23,9 @@ Gem::Specification.new do |spec|
 
   # Dependencies
   spec.add_dependency 'rspec', '~>3.0'
-  spec.add_dependency 'json'
+  spec.add_dependency 'json', '~>1.8.1', '>= 1.8.1'
 
   spec.add_development_dependency 'bundler', '~> 1.6'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rubocop', '>= 0.23.0'
+  spec.add_development_dependency 'rake', '~> 10.3.2', '>=10.3.2'
+  spec.add_development_dependency 'rubocop', '~>0.23.0', '>= 0.23.0'
 end

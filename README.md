@@ -1,3 +1,6 @@
+[![Gem Version](https://badge.fury.io/rb/slack_ci.svg)](http://badge.fury.io/rb/slack_ci)
+[![Dependency Status](https://gemnasium.com/grubernaut/SlackCI.svg)](https://gemnasium.com/grubernaut/SlackCI)
+
 # SlackCi
 
 Slack Gem for Ruby. Includes Binary executable for instantly posting messages to slack via
