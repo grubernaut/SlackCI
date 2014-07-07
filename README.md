@@ -1,6 +1,9 @@
 # SlackCi
 
-TODO: Write a gem description
+Slack Gem for Ruby. Includes Binary executable for instantly posting messages to slack via
+the command line. 
+
+Aims as a learning project. Patience required
 
 ## Installation
 
@@ -22,7 +25,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/slack_ci/fork )
+1. Fork it ( https://github.com/grubernaut/slack_ci/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
