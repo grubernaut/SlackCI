@@ -1,15 +1,19 @@
 require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
+require 'rubocop/rake_task'
 
-#Get Color
+# RSpec Test Task
 RSpec::Core::RakeTask.new(:unit) do |t|
-	t.rspec_opts = [].tap do |a|
-		a.push('--color')
-		a.push('--format progress')
-	end.join(' ')
+  t.rspec_opts = [].tap do |a|
+    a.push('--color')
+    a.push('--format progress')
+  end.join(' ')
 end
 
-desc 'Run All Tests'
-task :test => [:unit]
+# RuboCop Test Task
+RuboCop::RakeTask.new(:rubocop)
 
-task :default => [:test]
+desc 'Run All Tests'
+task 'test' => [:unit, :rubocop]
+
+task 'default' => [:test]

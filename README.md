@@ -19,14 +19,27 @@ Or install it yourself as:
 
     $ gem install slack_ci
 
-## Usage
+## TODO
 
-TODO: Write usage instructions here
+* Create Local Configuration File
+* Create Binary from API
+* Implement further tests 
+* ... 
 
-## Contributing
+## Running Tests / Contributing
+
+I have created a new slack team and a new web integration just for rspec purposes of testing this gem. Please use team: ```slackCI``` and the integration token ```D7eRlWzfbmZuqL2CqtXHS4ZA``` when writing more rspec tests, or use your own team + token just ensure that the correct team + token values are set back to defaults before creating a PR. This ensures that any contributers do not have to have a Slack account to contribute and test the gem. 
+
+### Steps to contribute: 
 
 1. Fork it ( https://github.com/grubernaut/slack_ci/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+4. Ensure all tests pass (`rake test`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create a new Pull Request
+
+## Usage
+
+TODO: Write usage instructions here
+
