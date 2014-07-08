@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+
+require 'slack_ci'
+require 'yaml'
+
+# If Incorrect number of arguments is used, exit hard
+if ARGV.length < 2
+  puts 'CRITICAL: Wrong number of arguments'
+  puts 'Usage: slackci [CHANNEL] [MESSAGE]'
+  exit 3
+end
+
+# Assign Message Variables to arguments
+# TODO: Allow for multiple "arguments" passed without need for quotes
+# TODO: Check for channel beginning with a "#"
+
+channel = ARGV[0]
+text = ARGV[1]
+
+# Default Config when no config file present
+@config = {
+  'team' => 'slackCI',
+  'token' => 'D7eRlWzfbmZuqL2CqtXHS4ZA'
+}
+
+# Read in config from file
+begin
+  config = YAML.load_file(ENV['HOME'] + '/.slackci.yml')
+rescue Errno::ENOENT
+  puts 'WARN: YAML config could not be found. Using defaults.'
+rescue Psych::SyntaxError
+  puts 'CRITICAL: YAML config file contains invalid syntax.'
+  exit 1
+end
+
+if config.inspect != 'nil'
+  # Check for Required Config Values
+  if !config['team'] || !config['token']
+    puts 'CRITICAL: YAML config incorrectly written.'
+    exit 2
+  else
+    # Config File is correct for required parameters
+    @config.merge!(config)
+  end
+end
+
+slack = SlackCi.new(@config['team'], @config['token'])
+
+message = {
+  'text' => "#{text}",
+  'channel' => "#{channel}"
+}
+
+# Add optional config parameters
+message.store('icon_emoji', @config['icon_emoji']) if @config['icon_emoji']
+message.store('icon_url', @config['icon_url']) if @config['icon_url']
+message.store('username', @config['username']) if @config['username']
+
+# TODO: Check for status code on say method call
+slack.say(message)
