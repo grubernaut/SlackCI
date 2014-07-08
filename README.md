@@ -69,3 +69,35 @@ end
 To Create a webhook token for your team, start [here](https://slackci.slack.com/services/new/incoming-webhook), and select any channel for the webhook. 
 Then use the generated token from Slack as your access token. You will be able to post to different channels in slack with the same token, if you specify ```channel``` inside the message hash. 
 
+## CLI Usage
+
+Install the Gem:
+```
+gem install slack_ci
+```
+
+Follow the instructions above to create a webhook token for your team.
+
+Create a config file inside of your home directory:
+```
+touch ~/.slackci.yml
+```
+And add the following contents into the YAML configuration file. The only required information in the file is your team name, and your token. Every other parameter is optional. 
+**NOTE:** If you use ```icon_emoji``` _and_ ```icon_url``` SlackCI will use the emoji configuration first, as there can only be one of either. 
+```
+---
+team: '<team_name>'
+token: '<webhook-token>'
+icon_url: '<icon_url>'
+icon_emoji: '<icon_emoji>'
+username: '<username>'
+```
+
+Once you have the configuration file written correctly, simply run the SlackCI binary from the terminal.
+```
+slackci #channel this is one interesting message
+```
+
+**NOTE:** Messages do not have to be quote delimited. Anything after the channel name will be added to the message. Including any "<hyperlinks>" and ":emoji:" that you wish to send to slack. 
+
+

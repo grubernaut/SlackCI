@@ -11,11 +11,19 @@ if ARGV.length < 2
 end
 
 # Assign Message Variables to arguments
-# TODO: Allow for multiple "arguments" passed without need for quotes
-# TODO: Check for channel beginning with a "#"
+# Argument Assignment. Shift takes first Argument and "pops" it.
+channel = ARGV.shift
+# Joins remaining arguments allowing string to be passed without
+# encapsulating string in quotes inside of terminal
+text = ARGV.join(' ')
 
-channel = ARGV[0]
-text = ARGV[1]
+# Checks if channel has an octothorpe in front of it.
+# If it does not, throw a warning and fix it for the user.
+# -- We fight for the users around here... --
+unless channel[0, 1] == '#'
+  puts 'WARN: Please specify a channel name with \'#\' in front of the channel'
+  channel = "\##{channel}"
+end
 
 # Default Config when no config file present
 @config = {
@@ -57,4 +65,8 @@ message.store('icon_url', @config['icon_url']) if @config['icon_url']
 message.store('username', @config['username']) if @config['username']
 
 # TODO: Check for status code on say method call
-slack.say(message)
+res = slack.say(message)
+unless res == '200'
+  puts "CRITICAL: Error reaching Slack services. HTTP CODE:#{res}"
+  exit 4
+end
