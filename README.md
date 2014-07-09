@@ -25,8 +25,6 @@ Or install it yourself as:
 
 ## TODO
 
-* Create Local Configuration File
-* Create Binary from API
 * Implement further tests 
 * Add YardDoc
 * ... 
